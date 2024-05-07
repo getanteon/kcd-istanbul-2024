@@ -1,0 +1,1 @@
+sudo strace -f -e trace=socket,connect,write,read,accept -p $PID
