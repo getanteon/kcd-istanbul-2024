@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kcd-server
+  namespace: kcd
+  labels:
+    app: kcd-server  # Add this label to match the service selector
+spec:
+  containers:
+  - name: kcd-server
+    image: kenanfarukcakir/kcd-server:v1
+    ports:
+    - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kcd-server
+  namespace: kcd
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: kcd-server

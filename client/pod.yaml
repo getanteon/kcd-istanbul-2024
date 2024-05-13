@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kcd-client
+  namespace: kcd
+  labels:
+    app: kcd-client  # Add this label to match the service selector
+
+spec:
+  containers:
+  - name: kcd-client
+    image: kenanfarukcakir/kcd-client:v1
+    ports:
+    - containerPort: 8080
